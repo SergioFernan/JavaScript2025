@@ -120,3 +120,45 @@ Crea una función fraseAleatoria() que devuelva una de estas tres frases al azar
 ```javascript
 fraseAleatoria(); // → "Sigue así"
 ```
+
+# ¡Lo NUEVO! Propuesta TC39: Random namespace (Stage 2)
+
+Lo más emocionante es que JavaScript está a punto de tener una API moderna y sencilla para números aleatorios. Está en Stage 2 del proceso TC39 (¡progresando para ser estándar!)
+
+### ¿Cómo luce esta nueva API?
+```javascript
+// En el futuro (próximamente en JavaScript nativo)
+
+// 🎲 Números enteros (¡adiós Math.floor!)
+Random.int(1, 6);        // → 3 (dado de 6 caras)
+
+// 📊 Números decimales
+Random.float(0, 1);      // → 0.472 (como Math.random() pero más claro)
+
+// 🔘 Booleanos al azar
+Random.boolean();        // → true o false
+
+// 🎯 Elegir elemento de un array
+Random.pick(["rojo", "verde", "azul"]);  // → "verde"
+
+// 🔀 Mezclar array
+Random.shuffle([1, 2, 3, 4, 5]);  // → [3, 1, 5, 2, 4]
+
+// ∞ Con semilla (resultados reproducibles)
+const rng = Random.withSeed(12345);
+rng.int(1, 10);  // Siempre dará el mismo resultado con la misma semilla
+rng.int(1, 10);  // Secuencia predecible pero "aleatoria"
+```
+
+### ¿Por qué es tan buena esta propuesta?
+Actualmente para hacer algo simple como un dado, necesitas:
+```javascript
+// 😓 LO ANTIGUO (actual)
+Math.floor(Math.random() * 6) + 1;
+```
+Con la nueva API:
+```javascript
+// 😎 LO NUEVO (próximamente)
+Random.int(1, 6);
+```
+¡Mucho más legible y menos propenso a errores! Por ahora debemos esperar, aun no ha sido aceptada, pero es importante estar al día en las cosas que se vienen.
